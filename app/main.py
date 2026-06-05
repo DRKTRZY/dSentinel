@@ -1,15 +1,6 @@
-import docker
-import json
+from app.docker_manager import DockerManager
 
-client = docker.from_env()
+docker = DockerManager()
 
-containers = client.containers.list()
-
-for container in containers:
-    print("=" * 50)
-    print(f"Name: {container.name}")
-    print(f"Image: {container.image.tags}")
-    print(f"Status: {container.status}")
-
-    print("\nLabels:")
-    print(json.dumps(container.labels, indent=2))
+for container in docker.get_containers():
+    print(container)
