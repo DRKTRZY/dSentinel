@@ -1,19 +1,13 @@
-import subprocess
+from app.models import UpdateInfo
 
 
 class UpdateChecker:
-    def check_stack(self, stack):
-        result = subprocess.run(
-            [
-                "docker",
-                "compose",
-                "-f",
-                stack.compose_file,
-                "pull",
-                "--quiet",
+    def check_stack(self, stack) -> UpdateInfo:
+        return UpdateInfo(
+            stack=stack.project,
+            has_updates=False,
+            containers=[
+                container.name
+                for container in stack.containers
             ],
-            capture_output=True,
-            text=True,
         )
-
-        return result.returncode == 0

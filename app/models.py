@@ -19,3 +19,9 @@ class StackInfo:
     working_dir: str
     compose_file: str
     containers: list[ContainerInfo]
+
+@dataclass
+class UpdateInfo:
+    stack: str
+    has_updates: bool
+    containers: list[str]
