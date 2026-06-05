@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class ContainerInfo:
     name: str
@@ -10,3 +11,11 @@ class ContainerInfo:
     compose_service: str | None = None
     working_dir: str | None = None
     compose_file: str | None = None
+
+
+@dataclass
+class StackInfo:
+    project: str
+    working_dir: str
+    compose_file: str
+    containers: list[ContainerInfo]
