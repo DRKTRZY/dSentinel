@@ -5,13 +5,13 @@ from dataclasses import dataclass
 class ContainerInfo:
     name: str
     image: str
+    image_id: str
     status: str
 
     compose_project: str | None = None
     compose_service: str | None = None
     working_dir: str | None = None
     compose_file: str | None = None
-
 
 @dataclass
 class StackInfo:

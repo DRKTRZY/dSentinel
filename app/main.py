@@ -13,6 +13,7 @@ def main():
     containers = docker.get_containers()
     stacks = stack_manager.group_containers(containers)
 
+    # Update Command
     if len(sys.argv) == 3 and sys.argv[1] == "update":
         stack_name = sys.argv[2]
 
@@ -31,6 +32,8 @@ def main():
 
         for container in stack.containers:
             print(f"  - {container.name}")
+            print(f"    Image: {container.image}")
+            print(f"    Image ID: {container.image_id}")
 
         print()
 
